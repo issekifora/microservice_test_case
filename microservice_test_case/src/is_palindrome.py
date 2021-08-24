@@ -8,7 +8,7 @@ class EmptyStringError(Exception):
     pass
 
 
-def reverse_string(string):
+def is_palindrome(string):
     """
     Reversed a string provided. Cannot reverse empty string.
     :param string: String to reverse
@@ -19,8 +19,5 @@ def reverse_string(string):
 
     logger.debug(string)
 
-    string_reversed = string[::-1]
 
-    logger.debug(string_reversed)
-
-    return string_reversed
+    return string == string[::-1]

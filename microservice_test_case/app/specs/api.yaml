@@ -14,7 +14,7 @@ paths:
     post:
       description: Развёртывание текста задом наперёд
       summary: Передаваемый текст преобразуется в текст, которые при прочтении его с конца к началу будет соответствовать исходному.
-      operationId: microservice_template.app.rest.get_reversed_string
+      operationId: microservice_test_case.app.rest.get_reversed_string
       tags:
         - Core
       requestBody:
@@ -51,8 +51,12 @@ components:
           properties:
             string:
               type: string
-              description: Строка для разворачивания
+              description: Строка для проверки
               example: А роза упала на лапу Азора
+            is_palindrome:
+              type: boolean
+              description: Результат проверки
+              example: false
 
     Response:
       type: object

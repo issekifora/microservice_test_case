@@ -1,4 +1,4 @@
-from microservice_template.app import application as app
+from microservice_test_case.app import application as app
 
 
 if __name__ == "__main__":

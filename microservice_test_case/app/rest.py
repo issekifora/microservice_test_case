@@ -1,4 +1,4 @@
-from microservice_template.src.reverse_string import reverse_string, EmptyStringError
+from microservice_test_case.src.is_palindrome import is_palindrome, EmptyStringError
 
 
 def get_reversed_string(body):
@@ -7,7 +7,7 @@ def get_reversed_string(body):
     string = body["params"]["string"]
 
     try:
-        result["result"] = {"string": reverse_string(string)}
+        result["result"] = {"string": string, "is_palindrome": is_palindrome(string)}
         return result, 201
     except EmptyStringError as error:
         result["error"] = {"code": 1010, "message": str(error)}

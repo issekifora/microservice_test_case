@@ -2,8 +2,13 @@ import logging.config
 
 import connexion
 from flask.logging import create_logger
+import pathlib
 
-logging.config.fileConfig(fname="logging.ini", disable_existing_loggers=False)
+
+logging_ini = str(pathlib.Path(*[i for i in pathlib.Path.cwd().parts if i != "tests"]).joinpath("logging.ini"))
+
+
+logging.config.fileConfig(fname=logging_ini, disable_existing_loggers=False)
 logging.getLogger("connexion").setLevel(logging.WARNING)
 logging.getLogger("openapi_spec_validator").setLevel(logging.WARNING)
 

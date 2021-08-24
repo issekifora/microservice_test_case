@@ -11,9 +11,9 @@ def test_swagger(test_client):
 
 
 @pytest.mark.functional
-def test_get_functions(test_client, string, reversed_string):
+def test_get_functions(test_client, string):
     data = {"params": {"string": string}}
     response = test_client.post("/template/v0.1/reverse", json=data)
     assert response.status_code == 201
     response = json.loads(response.data.decode())
-    assert response["result"]["string"] == reversed_string
+    assert response["result"]["is_palindrome"] is True

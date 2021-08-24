@@ -1,6 +1,5 @@
 gunicorn
 connexion[swagger-ui]
 flask
-pika
 fastjsonschema
 python-json-logger
