@@ -1,7 +1,6 @@
-pytest
-coverage
-tox
-tox-docker==1.2.1
-prance
+pytest~=6.2.4
+coverage~=5.5
+tox~=3.24.3
+prance~=0.21.8.0
 openapi-spec-validator
-jsonschema
+jsonschema~=3.2.0
