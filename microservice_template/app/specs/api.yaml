@@ -1,0 +1,92 @@
+openapi: 3.0.0
+
+info:
+  title: Микросервис для разворачивания текстов
+  version: "0.1"
+  description: |
+    Берёт текст и разворачивает его задом наперёд.
+
+servers:
+  - url: /template/v0.1
+
+paths:
+  /reverse:
+    post:
+      description: Развёртывание текста задом наперёд
+      summary: Передаваемый текст преобразуется в текст, которые при прочтении его с конца к началу будет соответствовать исходному.
+      operationId: microservice_template.app.rest.get_reversed_string
+      tags:
+        - Core
+      requestBody:
+        description: Объект запроса
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Request"
+      responses:
+        "201":
+          description: Сообщение, содержащее обработанный текст и метаданные
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Response"
+        '400':
+          description: Ошибка запроса, например невалидный json.
+
+
+components:
+  schemas:
+    Request:
+      type: object
+      description: Передаваемый запрос
+      required:
+        - params
+      properties:
+        params:
+          type: object
+          description: Параметры передаваемого запроса
+          required:
+            - string
+          properties:
+            string:
+              type: string
+              description: Строка для разворачивания
+              example: А роза упала на лапу Азора
+
+    Response:
+      type: object
+      description: Получаемый ответ
+      properties:
+        result:
+          $ref: "#/components/schemas/Result"
+        error:
+          $ref: "#/components/schemas/Error"
+    Result:
+      type: object
+      description: Результат работы функции
+      required:
+        - string
+      properties:
+        string:
+          type: string
+          example: арозА упал ан алапу азор А
+    Error:
+      type: object
+      description: Сообщение об ошибке
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          description: Код ошибки (уникальный для приложения)
+          example: 1000
+        message:
+          type: string
+          description: Описание ошибки
+          example: An error has occurred.
+        data:
+          type: string
+          description: Дополнительная информация, передаваемая как строка. Например, traceback ошибки.
+
