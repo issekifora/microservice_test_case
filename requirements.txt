@@ -34,3 +34,4 @@ virtualenv==20.7.2
 distlib==0.3.2
 platformdirs==2.2.0
 zipp==3.5.0
+python-json-logger
